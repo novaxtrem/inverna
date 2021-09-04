@@ -14,7 +14,7 @@ $(document).ready(function() {
             data: { ID: "", valor: variable },
             success: function(data) {
                 console.log(data);
-                alert(CORRECTO_MSJ);
+
             }
         });
 

@@ -6,8 +6,10 @@
 
     </html>
     <title>Page Title</title>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="css/Semantic-UI-CSS-master/semantic.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="css/Semantic-UI-CSS-master/semantic.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/index.js"></script>
 </head>
@@ -16,6 +18,114 @@
 
     <h1 id="dato">ola ke ase</h1>
     <button id="test" type="button">prueba</button>
+
+    <div class="ui top fixed menu">
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD0ZXAis5HUFeV_PsBN0v76UW4JHRL92-gKQ&usqp=CAU">
+        </div>
+        <a class="item">Sensores</a>
+        <a class="item">Perfiles</a>
+        <a class="item">invernaderos</a>
+    </div>
+
+    <p></p>
+
+
+
+    <div class="ui two column centered grid">
+
+        <div class="four column centered row">
+            <div class="column">
+                <div class="column">
+                    <div class="ui grid">
+
+                        <div class="four wide column"><img class="ui medium rounded image" src="https://images-platform.99static.com//zbo-4hl3aRijkNKwr_ikIve4COU=/2x0:946x944/fit-in/500x500/99designs-contests-attachments/33/33764/attachment_33764511">
+                        </div>
+                        <div class="four wide column"><img class="ui medium rounded image" src="https://images-platform.99static.com//zbo-4hl3aRijkNKwr_ikIve4COU=/2x0:946x944/fit-in/500x500/99designs-contests-attachments/33/33764/attachment_33764511">
+                        </div>
+                        <div class="four wide column"><img class="ui medium rounded image" src="https://images-platform.99static.com//zbo-4hl3aRijkNKwr_ikIve4COU=/2x0:946x944/fit-in/500x500/99designs-contests-attachments/33/33764/attachment_33764511">
+                        </div>
+                        <div class="four wide column"><img class="ui medium rounded image" src="https://images-platform.99static.com//zbo-4hl3aRijkNKwr_ikIve4COU=/2x0:946x944/fit-in/500x500/99designs-contests-attachments/33/33764/attachment_33764511">
+                        </div>
+                        <div class="four wide column"><img class="ui medium rounded image" src="https://images-platform.99static.com//zbo-4hl3aRijkNKwr_ikIve4COU=/2x0:946x944/fit-in/500x500/99designs-contests-attachments/33/33764/attachment_33764511">
+                        </div>
+                        <div class="four wide column"><img class="ui medium rounded image" src="https://images-platform.99static.com//zbo-4hl3aRijkNKwr_ikIve4COU=/2x0:946x944/fit-in/500x500/99designs-contests-attachments/33/33764/attachment_33764511">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="column">
+
+                <div class="ui container">
+                    <form class="ui form">
+                        <h1>Configuracion del sensor: Sensor01</h1>
+                        <br>
+                        <h3>temperatura actual: </h3>
+                        <br>
+                        <h3>humedad actual: </h3>
+                        <br>
+                        <div class="fields">
+                            <div class="seven wide field">
+                                <label>Temperatura deseada</label>
+                                <input type="text" name="input-temperatura" maxlength="4" placeholder="ingrese temperatura">
+                            </div>
+                            <div class="six wide field">
+                                <label>Seleccionar activador</label>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <select class="ui fluid search dropdown" name="selector-activador">
+                                    <option value="">salida 1</option>
+                                    <option value="1">salida 2</option>
+                                </select>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui toggle checkbox">
+                                            <input type="checkbox" name="radio-on-off">
+                                            <label>encender/apagar</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="seven wide field">
+                                <label>Humedad deseada</label>
+                                <input type="text" name="input-humedad" maxlength="4" placeholder="ingrese humedad">
+                            </div>
+                            <div class="six wide field">
+                                <label>Seleccionar activador</label>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <select class="ui fluid search dropdown" name="selector-activador">
+                                    <option value="">salida 1</option>
+                                    <option value="1">salida 2</option>
+                                </select>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui toggle checkbox">
+                                            <input type="checkbox" name="radio-on-off">
+                                            <label>encender/apagar</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui buttons">
+                            <button class="ui button active">cancelar</button>
+                            <button class="ui positive button">guardar cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 
 </body>
 
