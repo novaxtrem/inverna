@@ -12,7 +12,7 @@ $q = "INSERT INTO `invernaderos`(`id_invernadero`, `nombre`) VALUES ('$id', '$no
 $query = mysqli_query($conn, $q);
 //
 if ($query) {
-    //echo json_encode("ok");
+    echo json_encode("ok");
     //echo json_encode("Data Inserted Successfully");
 } else {
     var_dump(mysqli_error($conn));
