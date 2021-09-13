@@ -2,44 +2,122 @@
 <html>
 
 <head>
-    <html lang="es">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css" />
 
-    </html>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit-icons.min.js"></script>
+    <!--custom-->
+    <link rel="stylesheet" href="customCSS/index.css" />
     <title>Page Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/clases-metodos.js"></script>
 </head>
 
 <body>
-    <div id="agregar-invernadero-container">
-        <form>
-            <label for="nombre-invernadero">nombre del invernadero</label>
-            <input type="text" id="input-agrego-invernadero"><br>
+    <div class="uk-container uk-container-small">
 
-            <button id="btn-agregar-invernadero" type="button">agregar</button>
-        </form>
-    </div>
+        <div class="uk-section uk-section-muted">
+            <div class="uk-container">
 
-    <div id="configurar-invernadero-container">
-        <form>
+                <h3>ID_Sensor : 3</h3>
 
-            <div>
-                <label for="invernaderos">seleccionar invernadero</label>
-                <select id="invernaderos-container" name="invernaderos"></select>
-                <br>
-                <div>
-                    <label for="controladoras">selecciona controladora</label>
-                    <select id="controladoras-container" name="controladoras"></select>
-                    <br>
-                </div>
+                <form class="uk-form-horizontal uk-margin-large">
+
+                    <div class="uk-grid-small" uk-grid>
+                        <div class="uk-width-1-2@s">
+                            <div class="uk-form-label">Enceder/Apagar</div>
+                            <div class="uk-form-controls uk-form-controls-text">
+                                <div class="uk-margin">
+                                    <label class="uk-switch" for="on-1"><input type="checkbox" id="on-1"><div class="uk-switch-slider uk-switch-on-off round"></div></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="uk-width-1-2@s">
+                            <label class="uk-form-label" for="form-horizontal-text">Estado del sensor</label>
+                            <div class="uk-form-controls">
+                                <div class="uk-margin">
+                                    <input class="uk-input uk-form-success uk-form-width-large" type="text" placeholder="en linea" value="en linea" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">Nombre del sensor</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="ingrese nombre">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-select">Tipo de sensor</label>
+                        <div class="uk-form-controls">
+                            <select class="uk-select" id="form-horizontal-select">
+                                <option>Seleccionar tipo</option>
+                                <option>Humedad</option>
+                                <option>Temperatura</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid-small" uk-grid>
+
+                        <div class="uk-width-1-5@s">
+                            <label class="uk-form-label" for="form-stacked-text">Lectura actual</label>
+                            <input class="uk-input uk-form-width-large" type="text" placeholder="" value="30 variable_name" readonly>
+                        </div>
+                        <div class="uk-width-1-5@s">
+                            <label class="uk-form-label" for="form-stacked-text">Condicion</label>
+                            <select class="uk-select" id="form-horizontal-select">
+                                <option>Seleccionar</option>
+                                <option>menor que</option>
+                                <option>mayor que</option>
+                            </select>
+                        </div>
+                        <div class="uk-width-1-5@s">
+                            <label class="uk-form-label" for="form-stacked-text">Valor deseado</label>
+                            <input class="uk-input uk-form-width-large" type="text" placeholder="ingrese valor" value="">
+                        </div>
+
+                        <div class="uk-width-1-5@s">
+                            <label class="uk-form-label" for="form-stacked-text">Accion</label>
+                            <select class="uk-select" id="form-horizontal-select">
+                                <option>Seleccionar</option>
+                                <option>Encender</option>
+                                <option>Apagar</option>
+                            </select>
+                        </div>
+
+                        <div class="uk-width-1-5@s">
+                            <label class="uk-form-label" for="form-stacked-text">Salida</label>
+                            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                <label><input class="uk-checkbox" type="checkbox"> 1</label>
+                                <label><input class="uk-checkbox" type="checkbox"> 2</label>
+                                <label><input class="uk-checkbox" type="checkbox"> 3</label>
+                                <label><input class="uk-checkbox" type="checkbox"> 4</label>
+                                <label><input class="uk-checkbox" type="checkbox"> 5</label>
+                                <label><input class="uk-checkbox" type="checkbox"> 6</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <p uk-margin>
+                        <button class="uk-button uk-button-danger">cancelar</button>
+                        <button class="uk-button uk-button-default">aceptar</button>
+                    </p>
+                </form>
+
+
             </div>
-            <button id="btn-configurar-invernadero" type="button">configurar</button>
-        </form>
+        </div>
+
+
+
+
     </div>
 
 
 </body>
-<script src="js/index.js"></script>
 
 </html>

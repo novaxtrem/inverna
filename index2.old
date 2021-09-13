@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <html lang="es">
+
+    </html>
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/clases-metodos.js"></script>
+</head>
+
+<body>
+    <div id="agregar-invernadero-container">
+        <form>
+            <label for="nombre-invernadero">nombre del invernadero</label>
+            <input type="text" id="input-agrego-invernadero"><br>
+
+            <button id="btn-agregar-invernadero" type="button">agregar</button>
+        </form>
+    </div>
+
+    <div id="configurar-invernadero-container">
+        <form>
+
+            <div>
+                <label for="invernaderos">seleccionar invernadero</label>
+                <select id="invernaderos-container" name="invernaderos"></select>
+                <br>
+                <div>
+                    <label for="controladoras">selecciona controladora</label>
+                    <select id="controladoras-container" name="controladoras"></select>
+                    <br>
+                </div>
+            </div>
+            <button id="btn-configurar-invernadero" type="button">configurar</button>
+        </form>
+    </div>
+
+
+</body>
+<script src="js/index.js"></script>
+
+</html>
