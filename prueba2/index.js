@@ -1,5 +1,8 @@
 var sensorID;
 
+var sensor = new Sensor();
+
+
 $(document).ready(function() {
 
     var botonSensor = $('.btn-configurar-sensor');
@@ -7,6 +10,8 @@ $(document).ready(function() {
 
     botonSensor.click(function() {
         sensorID = ($(this).attr("value"));
+
+        consultoSensor(($(this).attr("value")));
 
         generoHTMLConfiguracionSensor(sensorID);
 
@@ -21,7 +26,41 @@ $(document).ready(function() {
 });
 
 
+function consultoSensor(variable) {
+    $.ajax({
+        url: CONSULTO_SENSOR,
+        type: "post",
+        async: false,
+        data: { id: variable },
+        dataType: "JSON",
+        success: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                sensor = {
+                    id: data[i].id,
+                    nombre: data[i].nombre,
+                    lectura: data[i].lectura,
+                    tipo: data[i].tipo,
+                    estado: data[i].estado
+                };
+            }
+        }
+    });
+};
+
+
 function generoHTMLConfiguracionSensor(sensorID) {
+    //  alert(sensor.nombre);
+    var nombreSensor;
+    var estadoSensor;
+    var lecturaSensor;
+
+    /*  if (typeof listaSensores[sensorID].nombre == 'undefined') {
+        nombreSensor = "no ha definido un nombre para el sensor";
+    } else {
+        nombreSensor = listaSensores[sensorID].nombre;
+    }
+*/
+
     var configurarSensor = `
     <div class="uk-container uk-container-small">
         <div class="uk-section uk-section-muted">
@@ -49,7 +88,7 @@ function generoHTMLConfiguracionSensor(sensorID) {
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-horizontal-text">Nombre del sensor</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="ingrese nombre">
+                            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="` + nombreSensor + `" value="">
                         </div>
                     </div>
                     <div class="uk-margin">
