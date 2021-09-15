@@ -171,7 +171,11 @@ function generoHTMLConfiguracionSensor() {
 
     var options = document.getElementById('form-horizontal-select').options;
     for (let i = 0; i < options.length; i++) {
-        console.log(options[i].value); //log the value
+        alert(sensor.tipo);
+        if (sensor.tipo == options[i].value) {
+            console.log(options[i].value); //log the value
+        }
+
     }
 
 
