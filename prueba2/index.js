@@ -1,7 +1,9 @@
 var sensorID;
 
 var sensor = new Sensor();
-
+var nombreSensor;
+var estadoSensor;
+var lecturaSensor;
 
 $(document).ready(function() {
 
@@ -11,9 +13,9 @@ $(document).ready(function() {
     botonSensor.click(function() {
         sensorID = ($(this).attr("value"));
 
-        consultoSensor(($(this).attr("value")));
+        consultoSensor(sensorID);
 
-        generoHTMLConfiguracionSensor(sensorID);
+        generoHTMLConfiguracionSensor();
 
 
     });
@@ -34,38 +36,60 @@ function consultoSensor(variable) {
         data: { id: variable },
         dataType: "JSON",
         success: function(data) {
-            for (var i = 0; i < data.length; i++) {
-                sensor = {
-                    id: data[i].id,
-                    nombre: data[i].nombre,
-                    lectura: data[i].lectura,
-                    tipo: data[i].tipo,
-                    estado: data[i].estado
-                };
-            }
+            sensor = {
+                id_sensor: data[0].id_sensor,
+                nombre: data[0].nombre,
+                lectura: data[0].lectura,
+                tipo: data[0].tipo,
+                estado: data[0].estado
+            };
         }
     });
 };
 
 
-function generoHTMLConfiguracionSensor(sensorID) {
-    //  alert(sensor.nombre);
-    var nombreSensor;
-    var estadoSensor;
-    var lecturaSensor;
+function generoHTMLConfiguracionSensor() {
 
-    /*  if (typeof listaSensores[sensorID].nombre == 'undefined') {
-        nombreSensor = "no ha definido un nombre para el sensor";
+    var tipoSensor;
+
+    //
+    nombreSensor = sensor.nombre;
+    tipoSensor = `
+    <div class="uk-form-controls">
+        <select class="uk-select" id="form-horizontal-select">
+            <option value="Seleccionar tipo">Seleccionar tipo</option>
+            <option value="Humedad">Humedad</option>
+            <option>Temperatura</option>
+        </select>
+    </div>
+    `;
+
+    if (typeof sensor.tipo == 'undefined' || sensor.tipo == null) {
+        tipoSensor = `
+        <div class="uk-form-controls">
+            <select class="uk-select" id="form-horizontal-select">
+                <option>Seleccionar tipo</option>
+                <option>Humedad</option>
+                <option>Temperatura</option>
+            </select>
+        </div>
+        `;
     } else {
-        nombreSensor = listaSensores[sensorID].nombre;
+
+
+
+
     }
-*/
+
+
+
+
 
     var configurarSensor = `
     <div class="uk-container uk-container-small">
         <div class="uk-section uk-section-muted">
             <div class="uk-container">
-                <h3>ID_Sensor : ` + sensorID + `</h3>
+                <h3>ID_Sensor : ` + sensor.id_sensor + `</h3>
                 <form class="uk-form-horizontal uk-margin-large">
                     <div class="uk-grid-small" uk-grid>
                         <div class="uk-width-1-2@s">
@@ -88,18 +112,12 @@ function generoHTMLConfiguracionSensor(sensorID) {
                     <div class="uk-margin">
                         <label class="uk-form-label" for="form-horizontal-text">Nombre del sensor</label>
                         <div class="uk-form-controls">
-                            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="` + nombreSensor + `" value="">
+                            <input class="uk-input" id="form-horizontal-text" type="text" placeholder="" value="` + nombreSensor + `">
                         </div>
                     </div>
                     <div class="uk-margin">
-                        <label class="uk-form-label" for="form-horizontal-select">Tipo de sensor</label>
-                        <div class="uk-form-controls">
-                            <select class="uk-select" id="form-horizontal-select">
-                                <option>Seleccionar tipo</option>
-                                <option>Humedad</option>
-                                <option>Temperatura</option>
-                            </select>
-                        </div>
+                        <label class="uk-form-label" for="form-horizontal-select">Tipo de sensor</label>` + tipoSensor + `
+                        
                     </div>
                     <div class="uk-grid-small" uk-grid>
 
@@ -147,5 +165,15 @@ function generoHTMLConfiguracionSensor(sensorID) {
             </div>
         </div>   
     </div>`;
-    $('#configurar-sensor-container').html(configurarSensor);
+
+    $('#configurar-sensor-container').html(configurarSensor)
+
+
+    var options = document.getElementById('form-horizontal-select').options;
+    for (let i = 0; i < options.length; i++) {
+        console.log(options[i].value); //log the value
+    }
+
+
+
 };

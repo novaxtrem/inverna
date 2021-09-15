@@ -1,7 +1,7 @@
 class Sensor {
 
-    constructor(id, nombre, lectura, tipo, estado) {
-        this.id = id;
+    constructor(id_sensor, nombre, lectura, tipo, estado) {
+        this.id_sensor = id_sensor;
         this.nombre = nombre;
         this.lectura = lectura;
         this.tipo = tipo;
