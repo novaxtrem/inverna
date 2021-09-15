@@ -64,7 +64,7 @@ function generoHTMLConfiguracionSensor() {
     </div>
     `;
 
-    if (typeof sensor.tipo == 'undefined' || sensor.tipo == null) {
+    /* if (typeof sensor.tipo == 'undefined' || sensor.tipo == null) {
         tipoSensor = `
         <div class="uk-form-controls">
             <select class="uk-select" id="form-horizontal-select">
@@ -75,15 +75,7 @@ function generoHTMLConfiguracionSensor() {
         </div>
         `;
     } else {
-
-
-
-
-    }
-
-
-
-
+*/
 
     var configurarSensor = `
     <div class="uk-container uk-container-small">
@@ -169,9 +161,18 @@ function generoHTMLConfiguracionSensor() {
     $('#configurar-sensor-container').html(configurarSensor)
 
 
+
+
+
     var options = document.getElementById('form-horizontal-select').options;
     for (let i = 0; i < options.length; i++) {
-        console.log(options[i].value); //log the value
+        if (sensor.tipo == options[i].value) {
+
+
+            document.getElementById("form-horizontal-select").options[i].selected = 'selected';
+            console.log(options[i].value); //log the value
+        }
+
     }
 
 
