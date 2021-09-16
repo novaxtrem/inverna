@@ -1,9 +1,6 @@
 var sensorID;
 
 var sensor = new Sensor();
-var nombreSensor;
-var estadoSensor;
-var lecturaSensor;
 
 $(document).ready(function() {
 
@@ -43,6 +40,9 @@ function consultoSensor(variable) {
                 tipo: data[0].tipo,
                 estado: data[0].estado
             };
+            if (jQuery.isEmptyObject(data)) {
+                alert("Empty Object");
+            }
         }
     });
 };
@@ -51,31 +51,28 @@ function consultoSensor(variable) {
 function generoHTMLConfiguracionSensor() {
 
     var tipoSensor;
+    var nombreSensor;
+    var estadoSensor;
+    var lecturaSensor;
 
     //
     nombreSensor = sensor.nombre;
+
     tipoSensor = `
     <div class="uk-form-controls">
         <select class="uk-select" id="form-horizontal-select">
-            <option value="Seleccionar tipo">Seleccionar tipo</option>
-            <option value="Humedad">Humedad</option>
+            <option>Seleccionar tipo</option>
+            <option>Humedad</option>
             <option>Temperatura</option>
+            <option>PH</option>
+            <option>PH</option>
+            <option>PH</option>
         </select>
     </div>
     `;
 
-    /* if (typeof sensor.tipo == 'undefined' || sensor.tipo == null) {
-        tipoSensor = `
-        <div class="uk-form-controls">
-            <select class="uk-select" id="form-horizontal-select">
-                <option>Seleccionar tipo</option>
-                <option>Humedad</option>
-                <option>Temperatura</option>
-            </select>
-        </div>
-        `;
-    } else {
-*/
+
+
 
     var configurarSensor = `
     <div class="uk-container uk-container-small">
@@ -158,23 +155,31 @@ function generoHTMLConfiguracionSensor() {
         </div>   
     </div>`;
 
+    if (typeof sensor.tipo != 'undefined' || sensor.tipo != null) {
+        var options = document.getElementById('form-horizontal-select').options;
+        for (let i = 0; i < options.length; i++) {
+            if (sensor.tipo == options[i].value) {
+
+
+                document.getElementById("form-horizontal-select").options[i].selected = 'selected';
+
+            }
+
+        }
+
+
+
+
+    }
+
+
     $('#configurar-sensor-container').html(configurarSensor)
 
 
 
 
 
-    var options = document.getElementById('form-horizontal-select').options;
-    for (let i = 0; i < options.length; i++) {
-        if (sensor.tipo == options[i].value) {
+}
 
 
-            document.getElementById("form-horizontal-select").options[i].selected = 'selected';
-            console.log(options[i].value); //log the value
-        }
-
-    }
-
-
-
-};
+;
