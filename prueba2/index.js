@@ -65,8 +65,6 @@ function generoHTMLConfiguracionSensor() {
             <option>Humedad</option>
             <option>Temperatura</option>
             <option>PH</option>
-            <option>PH</option>
-            <option>PH</option>
         </select>
     </div>
     `;
@@ -155,6 +153,11 @@ function generoHTMLConfiguracionSensor() {
         </div>   
     </div>`;
 
+
+
+    $('#configurar-sensor-container').html(configurarSensor)
+
+
     if (typeof sensor.tipo != 'undefined' || sensor.tipo != null) {
         var options = document.getElementById('form-horizontal-select').options;
         for (let i = 0; i < options.length; i++) {
@@ -167,15 +170,7 @@ function generoHTMLConfiguracionSensor() {
 
         }
 
-
-
-
     }
-
-
-    $('#configurar-sensor-container').html(configurarSensor)
-
-
 
 
 
