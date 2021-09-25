@@ -1,0 +1,11 @@
+  //METODO FETCH SIMPLE EFICIENTE, PREFIERO AJAX
+    //  fetch('http://192.168.1.4/inverna/php2/consulto-sensores-conectados.php', {
+    //          method: 'GET',
+    //          headers: {
+    //              'Accept': 'json, text/plain, */*',
+    //              'Content-Type': 'json'
+    //          }
+    //      }).then(res => res.json())
+    //      .then(res => console.log(res));
+
+    

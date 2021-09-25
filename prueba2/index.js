@@ -1,10 +1,17 @@
 var sensorID;
 
 var sensor = new Sensor();
+var arraySensores = [];
 
 $(document).ready(function() {
 
+
+
+
+    consultoSensoresConectados();
+    dibujoSensores(arraySensores);
     var botonSensor = $('.btn-configurar-sensor');
+
 
 
     botonSensor.click(function() {
@@ -12,23 +19,57 @@ $(document).ready(function() {
 
         consultoSensor(sensorID);
 
-        generoHTMLConfiguracionSensor();
+        dibujoConfiguracionSensor();
 
 
     });
 
 
 
-
-
-
 });
 
+function consultoSensoresConectados() {
+
+    $.ajax({
+        url: GET_CONSULTO_SENSORES,
+        method: 'GET',
+        async: false,
+        dataType: "JSON",
+        success: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                sensor = {
+                    id_sensor: data[i].id_sensor,
+                    nombre: data[i].nombre,
+                    lectura: data[i].lectura,
+                    tipo: data[i].tipo,
+                    estado: data[i].estado
+                };
+                arraySensores.push(sensor);
+            }
+        },
+        fail: function(data) {
+            if (jQuery.isEmptyObject(data)) {
+                alert("Empty Object");
+            }
+        }
+    });
+}
+
+
+function dibujoSensores(arraySensores) {
+    var htmlToAppend = "";
+    for (var i = 0; i < arraySensores.length; i++) {
+        htmlToAppend += `
+        <a class="uk-button uk-button-default btn-configurar-sensor" value="` + arraySensores[i].id_sensor + `">` + arraySensores[i].nombre + `</a>
+        `;
+    }
+    $('#contenedor-sensores-activos').html(htmlToAppend)
+}
 
 function consultoSensor(variable) {
     $.ajax({
         url: CONSULTO_SENSOR,
-        type: "post",
+        method: 'POST',
         async: false,
         data: { id: variable },
         dataType: "JSON",
@@ -48,13 +89,12 @@ function consultoSensor(variable) {
 };
 
 
-function generoHTMLConfiguracionSensor() {
+function dibujoConfiguracionSensor() {
 
     var tipoSensor;
     var nombreSensor;
     var estadoSensor;
     var lecturaSensor;
-
     //
     nombreSensor = sensor.nombre;
 
@@ -68,10 +108,7 @@ function generoHTMLConfiguracionSensor() {
         </select>
     </div>
     `;
-
-
-
-
+    //
     var configurarSensor = `
     <div class="uk-container uk-container-small">
         <div class="uk-section uk-section-muted">
@@ -133,16 +170,16 @@ function generoHTMLConfiguracionSensor() {
                             </select>
                         </div>
                         <div class="uk-width-1-5@s">
-                            <label class="uk-form-label" for="form-stacked-text">Salida</label>
-                            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                <label><input class="uk-checkbox" type="checkbox"> 1</label>
-                                <label><input class="uk-checkbox" type="checkbox"> 2</label>
-                                <label><input class="uk-checkbox" type="checkbox"> 3</label>
-                                <label><input class="uk-checkbox" type="checkbox"> 4</label>
-                                <label><input class="uk-checkbox" type="checkbox"> 5</label>
-                                <label><input class="uk-checkbox" type="checkbox"> 6</label>
-                            </div>
+                            <label class="uk-form-label" for="form-stacked-text">Rele</label>
+                            <select class="uk-select" id="form-horizontal-select">
+                                <option>Seleccionar</option>
+                                <option>Rele 1</option>
+                                <option>Rele 2</option>
+                                <option>Rele 3</option>
+                                <option>Rele 4</option>
+                            </select>
                         </div>
+                    
                     </div>
                     <p uk-margin>
                         <button class="uk-button uk-button-danger">cancelar</button>
@@ -153,28 +190,15 @@ function generoHTMLConfiguracionSensor() {
         </div>   
     </div>`;
 
-
-
     $('#configurar-sensor-container').html(configurarSensor)
-
 
     if (typeof sensor.tipo != 'undefined' || sensor.tipo != null) {
         var options = document.getElementById('form-horizontal-select').options;
         for (let i = 0; i < options.length; i++) {
             if (sensor.tipo == options[i].value) {
-
-
                 document.getElementById("form-horizontal-select").options[i].selected = 'selected';
-
             }
-
         }
-
+        $('#form-horizontal-select').prop('disabled', true);
     }
-
-
-
-}
-
-
-;
+};
