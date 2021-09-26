@@ -1,4 +1,4 @@
-const GET_CONSULTO_SENSORES = "http://192.168.1.4/inverna/php2/consulto-sensores-conectados.php";
+const GET_CONSULTO_SENSORES = "http://localhost/inverna/php2/consulto-sensores-conectados.php";
 
 
 //CONSULTO INFO
