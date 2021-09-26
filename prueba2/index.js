@@ -32,6 +32,7 @@ function consultoSensoresConectados() {
 
     $.ajax({
         url: GET_CONSULTO_SENSORES,
+        timeout: 1000,
         method: 'GET',
         async: false,
         dataType: "JSON",
