@@ -9,3 +9,11 @@
     //      .then(res => console.log(res));
 
     
+
+    ARDUINO - NO ESTOY SEGURO QUE ANDE : GET method
+        /*int consulta = 0;
+      client.print("GET /inverna/php2/consulto-alta-sensor.php?" + content); //download text
+      client.println(); //end of get request
+      Serial.println(client.read());
+      }*/
+////

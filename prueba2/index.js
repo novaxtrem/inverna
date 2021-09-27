@@ -11,8 +11,17 @@ $(document).ready(function() {
     consultoSensoresConectados();
     dibujoSensores(arraySensores);
     var botonSensor = $('.btn-configurar-sensor');
+    var botonConfiguracion = $('#nueva-configuracion');
 
 
+
+
+    botonConfiguracion.click(function() {
+
+        dibujoConfiguracion();
+
+
+    });
 
     botonSensor.click(function() {
         sensorID = ($(this).attr("value"));
@@ -21,12 +30,96 @@ $(document).ready(function() {
 
         dibujoConfiguracionSensor();
 
-
     });
 
 
 
+
+
 });
+
+function populoOptionsDesplegableSensores() {
+
+
+    var desplegable = document.getElementById('form-horizontal-select-sensores');
+    for (var i = 0; i < arraySensores.length; i++) {
+        var option = document.createElement('option');
+        option.innerHTML = arraySensores[i].nombre;
+        option.value = arraySensores[i].id_sensor;
+        desplegable.appendChild(option);
+    }
+
+}
+
+
+function dibujoConfiguracion() {
+    var htmlToAppend = "";
+
+
+
+
+
+
+
+
+    htmlToAppend = `
+        <form class="uk-form-horizontal uk-margin-large">
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-horizontal-select-sensores">Selecciona sensor</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select" id="form-horizontal-select-sensores">
+                    </select>
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-horizontal-text">lectura</label>
+                <div class="uk-form-controls">
+                    <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Some text..." disabled>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-horizontal-select">condicion</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select" id="form-horizontal-select">
+                        <option value="menor">menor que</option>
+                        <option value="mayor">mayor que</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-horizontal-text">valor deseado</label>
+                <div class="uk-form-controls">
+                    <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Some text...">
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-horizontal-select">accion</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select" id="form-horizontal-select">
+                        <option value="encender">encender</option>
+                        <option value="apagar">apagar</option>
+                    </select>
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-horizontal-select">seleccionar rele</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select" id="form-horizontal-select">
+                        <option>Option 01</option>
+                        <option>Option 02</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <a id="btn-guardar-configuracion" class="uk-button uk-button-default" href="">aceptar</a>
+    `
+    $('#configuraciones').html(htmlToAppend);
+    populoOptionsDesplegableSensores();
+}
+
 
 function consultoSensoresConectados() {
 

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-
+    <meta http-equiv="Content-Language" content="es" />
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css" />
 
@@ -30,9 +30,10 @@
 
 
 
-        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-push">MENU</button>
+        <button id="nueva-configuracion" class="uk-button uk-button-default uk-margin-small-right" type="button">Nueva configuracion</button>
+        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-push-configurar">menu</button>
 
-        <div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
+        <div id="offcanvas-push-configurar" uk-offcanvas="mode: push; overlay: true">
             <div class="uk-offcanvas-bar">
 
                 <button class="uk-offcanvas-close" type="button" uk-close></button>
@@ -52,8 +53,19 @@
 
 
 
+
             </div>
         </div>
+
+
+
+
+
+        <div id="configuraciones">
+
+
+        </div>
+
 
         <div id="configurar-sensor-container"></div>
 
