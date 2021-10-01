@@ -12,7 +12,7 @@ $(document).ready(function() {
     dibujoSensores(arraySensores);
     var botonSensor = $('.btn-configurar-sensor');
     var botonConfiguracion = $('#nueva-configuracion');
-
+    var botonAgregarModulo = $('btn-agregar-modulo');
 
 
 
@@ -295,4 +295,25 @@ function dibujoConfiguracionSensor() {
         }
         $('#form-horizontal-select').prop('disabled', true);
     }
+};
+
+function agregoNuevoSensor(variable) {
+    $.ajax({
+        url: AGREGO_NUEVO_MODULO,
+        method: 'POST',
+        async: false,
+        data: { id: variable },
+        dataType: "JSON",
+        success: function(data) {
+            sensor = {
+                id_sensor: data[0].id_sensor,
+                tipo: data[0].tipo,
+                lectura: data[0].lectura,
+                estado: data[0].estado
+            };
+            if (jQuery.isEmptyObject(data)) {
+                alert("Empty Object");
+            }
+        }
+    });
 };

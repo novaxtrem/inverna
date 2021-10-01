@@ -4,7 +4,8 @@ const GET_CONSULTO_SENSORES = "http://192.168.1.5/inverna/php2/consulto-sensores
 //CONSULTO INFO
 const CONSULTO_SENSOR = "php2/consulto-sensor.php";
 
-
+//INSERT - UPDATE
+const AGREGO_NUEVO_MODULO = "php2/agrego-nuevo-modulo.php";
 
 const SELECT = "php/select.php"; //SELECT
 const INSERT_USER_SCRIP_POST = "https://jap-site.000webhostapp.com/insert.php?"; //INSERT 
