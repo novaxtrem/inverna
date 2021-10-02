@@ -1,23 +1,29 @@
 <?php
     require 'coneccion.php';
+    require 'constantes.php';
     header('Access-Control-Allow-Origin: *');
     //
     $id = $_POST['id'];
-    $tipo = $_POST['tipo'];
-    $lectura = $_POST['lectura'];
-    $estado = $_POST['estado'];
-
     //
-    //$query = "UPDATE `sensores` SET `nombre`='$nombre',`lectura`='$lectura',`tipo`='$tipo',`estado`='$estado' WHERE `id_sensor`='$id';";
-
-    $query = "INSERT INTO `modulos` (`id_modulo`, `tipo`, `lectura`, `estado`) VALUES('$id', '$tipo', '$lectura', DEFAULT) ON DUPLICATE KEY UPDATE `tipo`='$tipo', `lectura`='$lectura', `estado`='$estado';";
-    $result = mysqli_query($conn, $query);
-    //
-    if ($result) {
-        echo json_encode("ok");
+    if (is_numeric($id)) {
+        $query = "SELECT * FROM `modulos` WHERE `id_modulo`='$id';";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_object($result);
+        //
+        if (!empty($row)) {
+            //echo json_encode($row);
+            echo json_encode(constant("DUPLICADO"));
+        } else {
+            $query = "INSERT INTO `modulos` (`id_modulo`, `tipo`, `lectura`, `estado`) VALUES('$id', '', '0.0', DEFAULT);";
+            $result = mysqli_query($conn, $query);
+            //
+            if (!empty($result)) {
+                echo json_encode(constant("INSERTOK"));
+            } else {
+                echo json_encode(constant("INSERTFAIL")) . "\n";
+            }
+        }
     } else {
-        var_dump(mysqli_error($conn));
-        echo $query;
+        echo json_encode(constant("MALFORMATO"));
     }
-    $conn->close();
 ?>
