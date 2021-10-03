@@ -3,16 +3,13 @@
     header('Access-Control-Allow-Origin: *');
     //
     $id = $_POST['id'];
-    $nombre = $_POST['nombre'];
     $lectura = $_POST['lectura'];
-    $tipo = $_POST['tipo'];
-    $estado = $_POST['estado'];
     //
-    $query = "UPDATE `sensores` SET `nombre`='$nombre',`lectura`='$lectura',`tipo`='$tipo',`estado`='$estado' WHERE `id_sensor`='$id';";
+    $query = "UPDATE `modulos` SET `lectura`='$lectura' WHERE `id_modulo`='$id';";
     $result = mysqli_query($conn, $query);
     //
     if ($result) {
-        echo json_encode("ok");
+        echo json_encode("respuesta: ok");
     } else {
         var_dump(mysqli_error($conn));
         echo $query;

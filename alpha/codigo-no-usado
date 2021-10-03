@@ -17,3 +17,57 @@
       Serial.println(client.read());
       }*/
 ////
+
+
+
+//EJECUTO ARCHIVO PHP DIRECTO DESDE HTML
+function dibujoPanelAgregarModulo() {
+
+    $("#configurar-modulo-container").empty();
+    //
+    htmlToAppend = `
+        <form class="uk-form-stacked" method="post"  action="php2/agrego-nuevo-modulo.php">
+            <div class="uk-margin">
+            <h1 class="uk-heading-bullet" value="ID-CONFIGURACION">AGREGAR MODULO</h1>
+                <div class="uk-form-controls">
+                    <input class="uk-input" id="form-stacked-text" type="text" placeholder="ingrese id del modulo">
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label class="uk-form-label" for="form-stacked-select">TIPO DE MODULO</label>
+                <div class="uk-form-controls">
+                    <select class="uk-select" id="form-stacked-select-nuevo-modulo">
+                        <option value="NO">Seleccionar tipo</option>
+                        <option value="Humedad">Humedad</option>
+                        <option value="Temperatura">Temperatura</option>
+                        <option value="PH">PH</option>
+                    </select>
+                </div>
+            </div>
+            <p uk-margin>
+                <button class="uk-button uk-button-default uk-button-small" id="btn-cancelar">CANCELAR</button>
+                <button class="uk-button uk-button-primary uk-button-small" id="btn-aceptar-agregar-modulo"  type="submit">ACEPTAR</button>  
+            </p>
+        </form>`;
+    //
+    $('#agregar-modulo-container').html(htmlToAppend);
+};
+
+
+
+NI IDEA PERO ANDA
+
+
+function populoOptionsDesplegablemoduloes() {
+
+
+    var desplegable = document.getElementById('form-horizontal-select-modulos');
+    for (var i = 0; i < arrayModulos.length; i++) {
+        var option = document.createElement('option');
+        option.innerHTML = arrayModulos[i].nombre;
+        option.value = arrayModulos[i].id_modulo;
+        desplegable.appendChild(option);
+    }
+
+}
+

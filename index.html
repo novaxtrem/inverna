@@ -20,25 +20,28 @@
 
 
 <body>
-    <div class="uk-container uk-container-small">
-        <div class="uk-flex uk-flex-center">
-            <p uk-margin id="contenedor-modulos-activos">
-
-
-            </p>
-
+    <div class="uk-container uk-container-expand">
+        <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-4@s">
+                <div class="uk-grid-collapse uk-child-width-expand@s uk-text-center uk-margin-large-top" uk-grid>
+                    <div>
+                        <button class="uk-button uk-button-default" id="btn-agregar-modulo">AGREGAR MODULO</button>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-2@s">
+                <div id="configurar-modulo-container"></div>
+                <div id="agregar-modulo-container"></div>
+            </div>
+            <div class="uk-width-1-4@s">
+                <div class="uk-flex uk-flex-center">
+                    <p uk-margin id="contenedor-modulos-activos"></p>
+                </div>
+            </div>
         </div>
-
-
-
-        <div id="configuraciones">
-
-
-        </div>
-
-
-        <div id="configurar-modulo-container"></div>
     </div>
+
+
 
 
 
