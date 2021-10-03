@@ -15,7 +15,7 @@
             //echo json_encode($row);
             echo json_encode(constant("DUPLICADO"));
         } else {
-            $query = "INSERT INTO `modulos` (`id_modulo`, `tipo`, `lectura`, `estado`) VALUES('$id', '$tipo', '0.0', DEFAULT);";
+            $query = "INSERT INTO `modulos` (`id_modulo`, `tipo`, `lectura`, `estado`) VALUES('$id', '$tipo', DEFAULT, DEFAULT);";
             $result = mysqli_query($conn, $query);
             //
             if (!empty($result)) {
