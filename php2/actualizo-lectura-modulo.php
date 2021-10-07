@@ -2,46 +2,41 @@
 require 'coneccion.php';
 header('Access-Control-Allow-Origin: *');
 //
-$id = $_POST['id'];
+$id_modulo = $_POST['id_modulo'];
 $lectura = $_POST['lectura'];
+
 //
-$query = "UPDATE `modulos` SET `lectura`='$lectura' WHERE `id_modulo`='$id';";
+$array=[];
+$query = "UPDATE `modulos` SET `lectura`='$lectura' WHERE `id_modulo`='$id_modulo';";
 $result = mysqli_query($conn, $query);
 //
-if ($result) {
-    //$query = "SELECT * FROM `configuraciones` WHERE `id_modulo`='$id';";
-    $query = "SELECT configuraciones.*, modulos.tipo, modulos.lectura FROM   
-    `configuraciones` INNER  JOIN `modulos` ON modulos.id_modulo = configuraciones.id_modulo
-    WHERE modulos.id_modulo = '$id';";
+//$query = "SELECT * FROM `configuraciones` WHERE `id_modulo`='$id_modulo';";
 
-    $result = mysqli_query($conn, $query);
+$query = "SELECT `configuraciones`.*, `modulos`.tipo, `modulos`.lectura FROM   
+    `configuraciones` INNER  JOIN `modulos` ON `modulos`.id_modulo = `configuraciones`.id_modulo
+    WHERE `modulos`.id_modulo = '$id_modulo';";
 
-    while ($row = $result->fetch_assoc()) {
 
-      
-        
-        $id_configuracion = $row['id_configuracion'];
-        $id_modulo = $row['id_modulo'];
-        $valor_objetivo = $row['valor_objetivo'];
-        $accion = $row['accion'];
-        $estado = $row['estado'];
-        $tipo = $row['tipo'];
-        $lectura = $row['lectura'];
+//$result = mysqli_query($conn, $query);
+
+
+if($result = mysqli_query($conn, $query)){
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_array($result)){
+          
+           //echo  json_encode(array( 'id_configuracion'=> $row['id_configuracion'], 'accion'=> $row['accion'] ));
+           echo  json_encode(array($age = '{"accion":'.$row['accion'] .', "valor_objetivo":'.$row['id_configuracion'].'}'));
+       
+        }
+ 
+        mysqli_free_result($result);
+    } else{
+        echo "No records matching your query were found.";
     }
-
-    $age = array('lectura' =>$lectura, 'id_modulo'=> $id_modulo);
-    //$age = '{"lectura":'.$lectura.', "valor_objetivo":'.$valor_objetivo.'}';
-    //echo json_encode($age);
-    //$string_version = implode(',', $age);
-    //echo $string_version;
-    //echo print_r($age, true);
-    //$json_array = json_encode($arr);
-    //echo $json_array;
-    echo ('{"lectura": ' .$lectura. ', "id_modulo": ' .$id_modulo. '}');
-    //$age = array("respuesta" => "ok", "valor_objetivo" => "$valor_objetivo");
-    //echo json_encode($age);
-} else {
-    var_dump(mysqli_error($return_arr));
-    echo $query;
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
+ 
+
+
 $conn->close();
