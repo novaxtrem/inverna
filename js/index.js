@@ -98,7 +98,7 @@ function agregoActualizoConfiguracion(modulo) {
 
     if (modulo.tipo == $('#form-horizontal-select-tipo-configuro-modulo option:selected').val()) {
         $.ajax({
-            url: "php2/configuro-modulo.php",
+            url: "php/configuro-modulo.php",
             method: 'POST',
             async: false,
             dataType: "JSON",
