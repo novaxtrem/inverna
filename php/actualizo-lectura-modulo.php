@@ -9,7 +9,6 @@
     $query = "UPDATE `modulos` SET `lectura`='$lectura' WHERE `id_modulo`='$id_modulo';";
     $result = mysqli_query($conn, $query);
     //
-    //$query = "SELECT * FROM `configuraciones` WHERE `id_modulo`='$id_modulo';";
     $query = "SELECT `configuraciones`.*, `modulos`.tipo, `modulos`.lectura FROM   
         `configuraciones` INNER  JOIN `modulos` ON `modulos`.id_modulo = `configuraciones`.id_modulo
         WHERE `modulos`.id_modulo = '$id_modulo';";
@@ -31,9 +30,8 @@
         $tipo = $row['tipo'];
         $lectura = $row['lectura'];
     }
-    $age = array('id_configuracion' => $id_configuracion, 'id_modulo' => $id_modulo, 'valor_objetivo' => $valor_objetivo, 'accion' => $accion, 'tipo' => $tipo, 'lectura' => $lectura);
-    //$age = '{"lectura":'.$lectura.', "valor_objetivo":'.$valor_objetivo.'}';
-    echo json_encode($age);
+    $configuracion = array('id_configuracion' => $id_configuracion, 'id_modulo' => $id_modulo, 'valor_objetivo' => $valor_objetivo, 'accion' => $accion, 'tipo' => $tipo, 'lectura' => $lectura);
+    echo json_encode($configuracion);
     //
     $conn->close();
 ?>

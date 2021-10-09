@@ -232,13 +232,6 @@ function dibujoPanelAgregarModulo() {
 
 
 
-
-
-
-
-
-
-
 function agregoListeners(botonModulo, botonAgregarModulo) {
 
     botonModulo.click(function() {
