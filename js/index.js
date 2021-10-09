@@ -1,10 +1,7 @@
-var modulo = new Modulo();
+var modulo = Modulo();
 var arrayModulos = [];
 
 $(document).ready(function() {
-
-
-
 
     consultoModulosActivos();
     dibujoModulos(arrayModulos);
