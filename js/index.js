@@ -1,4 +1,4 @@
-var modulo = Modulo();
+var modulo = new Modulo();
 var arrayModulos = [];
 
 $(document).ready(function() {
