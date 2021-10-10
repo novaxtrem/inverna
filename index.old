@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Language" content="es" />
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css" />
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit-icons.min.js"></script>
+    <!--custom-->
+    <link rel="stylesheet" href="custom_CSS/index.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="js/clases.js"></script>
+    <script src="js/constantes.js"></script>
+    <script src="js/index.js"></script>
+    <title>PLC BASIC KIT</title>
+</head>
+
+<body>
+    <div class="uk-container uk-container-expand">
+        <div class="uk-grid-small" uk-grid>
+            <div class="uk-width-1-4@s">
+                <div class="uk-grid-collapse uk-child-width-expand@s uk-text-center uk-margin-large-top" uk-grid>
+                    <div>
+                        <button class="uk-button uk-button-default" id="btn-agregar-modulo">AGREGAR MODULO</button>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-2@s">
+                <div id="configurar-modulo-container"></div>
+                <div id="agregar-modulo-container"></div>
+            </div>
+            <div class="uk-width-1-4@s">
+                <div class="uk-flex uk-flex-center">
+                    <p uk-margin id="contenedor-modulos-activos"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
