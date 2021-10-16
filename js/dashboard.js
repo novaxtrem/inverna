@@ -9,6 +9,9 @@ $(document).ready(function() {
     //var botonModulo = $('.btn-configurar-modulo');
     //var botonAgregarModulo = $('#btn-agregar-modulo');
     //agregoListeners(botonModulo, botonAgregarModulo);
+
+
+
     //
 });
 
@@ -51,14 +54,17 @@ function dibujoModulos(arrayModulos) {
                 <td>` + arrayModulos[i].lectura + `</td>
                 <td>` + arrayModulos[i].estado + `</td>
                 <td>
-                    <button type="button" class="btn-configurar-modulo btn btn-primary" value="` + arrayModulos[i].id_modulo + `" data-toggle="modal" data-target="#myModal">configurar</button>
+                    <button type="button" class="btn-configurar-modulo btn btn-primary" value="` + arrayModulos[i].id_modulo + `">configurar</button>
                 </td>
             </tr>`;
+
     }
     $('#tabla-modulos-activos').html(htmlToAppend)
 
     $(".btn-configurar-modulo").click(function() {
-        alert("Handler for .click() called.");
+
+        $('#exampleModalCenter').modal('show');
     });
+
 }
 //
