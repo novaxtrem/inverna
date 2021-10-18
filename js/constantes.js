@@ -1,5 +1,5 @@
 //CONSULTO INFO
-const GET_CONSULTO_MODULOS = "http://192.168.1.5/inverna/php/consulto-modulos-activos.php";
+const GET_CONSULTO_MODULOS = "http://192.168.0.155/inverna/php/consulto-modulos-activos.php";
 const CONSULTO_MODULO = "php/consulto-modulo.php";
 
 //INSERT - UPDATE
