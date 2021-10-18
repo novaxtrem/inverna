@@ -45,14 +45,15 @@ function consultoModulosActivos() {
 
 function dibujoModulos(arrayModulos) {
     var htmlToAppend = "";
-    var imagen = "assets/img/plc.png";
+    const imagen = "assets/img/plc.png";
     for (var i = 0; i < arrayModulos.length; i++) {
         htmlToAppend +=
             `<tr>
                 <td><img class="rounded-circle me-2" width="30" height="30" src="` + imagen + `">` + arrayModulos[i].id_modulo + `</td>
                 <td>` + arrayModulos[i].tipo + `</td>
                 <td>` + arrayModulos[i].lectura + `</td>
-                <td>` + arrayModulos[i].estado + `</td>
+                <td>` + arrayModulos[i].valorObjetivo + `</td>
+                <td>` + arrayModulos[i].accion + `</td>
                 <td>
                     <button type="button" class="btn-configurar-modulo btn btn-primary" value="` + arrayModulos[i].id_modulo + `">configurar</button>
                 </td>
@@ -153,7 +154,7 @@ function dibujoPanelConfigurarModulo(modulo) {
             </div>
             <p uk-margin>
                 <button class="uk-button uk-button-default uk-button-small">CANCELAR</button>
-                <button class="uk-button uk-button-primary uk-button-small" onclick="agregoActualizoConfiguracion(modulo)">ACEPTAR</button>  
+                <button class="uk-button uk-button-primary uk-button-small">ACEPTAR</button>  
             </p>
         </form>`;
     //
