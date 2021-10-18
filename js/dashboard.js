@@ -47,6 +47,12 @@ function dibujoModulos(arrayModulos) {
     var htmlToAppend = "";
     const imagen = "assets/img/plc.png";
     for (var i = 0; i < arrayModulos.length; i++) {
+
+
+        if (arrayModulos[i].valorObjetivo == 'undefined' || arrayModulos[i].valorObjetivo == null) {
+            arrayModulos[i].valorObjetivo = 'no configurado';
+            arrayModulos[i].accion = 'no configurado';
+        }
         htmlToAppend +=
             `<tr>
                 <td><img class="rounded-circle me-2" width="30" height="30" src="` + imagen + `">` + arrayModulos[i].id_modulo + `</td>
