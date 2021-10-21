@@ -158,10 +158,10 @@ function dibujoPanelConfigurarModulo(modulo) {
                     </select>
                 </div>
             </div>
-            <p uk-margin>
-                <button class="uk-button uk-button-default uk-button-small">CANCELAR</button>
-                <button class="uk-button uk-button-primary uk-button-small">ACEPTAR</button>  
-            </p>
+            <div class="modal-footer">
+                <button class="btn btn-secondary">CANCELAR</button>
+                <button class="btn btn-primary">ACEPTAR</button>  
+            </div>
         </form>`;
     //
     $('#configurar-modulo-container').html(htmlToAppend);
